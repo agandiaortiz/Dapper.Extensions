@@ -10,5 +10,10 @@ namespace Dapper.Extensions.MSSQL
         {
             return services.AddDapper<MsSqlDapper>(monitorBuilder);
         }
+
+        public static IServiceCollection AddDapperForMSSQL(this IServiceCollection services, string connectionName, Action<MonitorBuilder> monitorBuilder = null)
+        {
+            return services.AddDapper<MsSqlDapper>(connectionName, monitorBuilder);
+        }
     }
 }

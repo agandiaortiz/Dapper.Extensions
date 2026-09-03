@@ -10,5 +10,10 @@ namespace Dapper.Extensions.Odbc
         {
             return services.AddDapper<OdbcDapper>(monitorBuilder);
         }
+
+        public static IServiceCollection AddDapperForODBC(this IServiceCollection services, string connectionName, Action<MonitorBuilder> monitorBuilder = null)
+        {
+            return services.AddDapper<OdbcDapper>(connectionName, monitorBuilder);
+        }
     }
 }

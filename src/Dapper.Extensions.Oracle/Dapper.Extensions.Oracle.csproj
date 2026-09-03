@@ -7,10 +7,10 @@
 		<Description>A dapper extension library. Support MySQL,SQL Server,PostgreSQL,SQLite,Oracle and ODBC, Support cache.</Description>
 		<PackageTags>Dapper,Dapper Extensions,DapperExtensions,Dapper.Extensions.NetCore,Extensions,DataBase,Sql Server,MSSQL,MySQL,PostgreSQL,SQLite,ODBC,Cahce,Caching,Redis,Memory,RedisCaching,MemoryCaching</PackageTags>
 		<Authors>Vodafone Enabler España</Authors>
-		<Version>5.4.2-internal</Version>
-		<AssemblyVersion>5.4.2.0</AssemblyVersion>
-		<FileVersion>5.4.2.0</FileVersion>
-		<InformationalVersion>5.4.2.0-internal</InformationalVersion>
+		<Version>5.4.3-internal</Version>
+		<AssemblyVersion>5.4.3.0</AssemblyVersion>
+		<FileVersion>5.4.3.0</FileVersion>
+		<InformationalVersion>5.4.3.0-internal</InformationalVersion>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageId>VFE.Dapper.Extensions.Oracle</PackageId>
 		<Product>Dapper.Extensions.Oracle</Product>

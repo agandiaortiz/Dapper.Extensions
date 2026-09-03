@@ -6,14 +6,14 @@
 		<PackageProjectUrl>https://github.com/agandiaortiz/Dapper.Extensions</PackageProjectUrl>
 		<PackageId>Dapper.Extensions.NetCore</PackageId>
 		<Description>A dapper extension library. Support MySQL,SQL Server,PostgreSQL,SQLite,Oracle and ODBC, Support cache.</Description>
-		<Version>5.4.2-internal</Version>
+		<Version>5.4.3-internal</Version>
 		<Authors>Vodafone Enabler España</Authors>
 		<PackageTags>Dapper,Dapper Extensions,DapperExtensions,Dapper.Extensions.NetCore,Extensions,DataBase,Sql Server,MSSQL,MySQL,PostgreSQL,SQLite,ODBC,Cahce,Caching,Redis,Memory,RedisCaching,MemoryCaching</PackageTags>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<LangVersion>latest</LangVersion>
-		<AssemblyVersion>5.4.2.0</AssemblyVersion>
-		<FileVersion>5.4.2.0</FileVersion>
-		<InformationalVersion>5.4.2.0-internal</InformationalVersion>
+		<AssemblyVersion>5.4.3.0</AssemblyVersion>
+		<FileVersion>5.4.3.0</FileVersion>
+		<InformationalVersion>5.4.2.3-internal</InformationalVersion>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.jpg</PackageIcon>
 		<Company>Vodafone Enabler España</Company>
@@ -47,6 +47,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.1" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="System.Configuration.ConfigurationManager" Version="10.0.1" />
 	</ItemGroup>
 
 </Project>

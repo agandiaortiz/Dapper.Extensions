@@ -10,5 +10,10 @@ namespace Dapper.Extensions.MySql
         {
             return services.AddDapper<MySqlDapper>(monitorBuilder);
         }
+
+        public static IServiceCollection AddDapperForMySQL(this IServiceCollection services, string connectionName, Action<MonitorBuilder> monitorBuilder = null)
+        {
+            return services.AddDapper<MySqlDapper>(connectionName, monitorBuilder);
+        }
     }
 }

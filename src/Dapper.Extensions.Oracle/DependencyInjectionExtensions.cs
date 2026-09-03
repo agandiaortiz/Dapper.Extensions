@@ -11,5 +11,11 @@ namespace Dapper.Extensions.Oracle
         {
             return services.AddDapper<OracleDapper>(monitorBuilder);
         }
+
+        public static IServiceCollection AddDapperForOracle(this IServiceCollection services, string connectionName,
+            Action<MonitorBuilder> monitorBuilder = null)
+        {
+            return services.AddDapper<OracleDapper>(connectionName, monitorBuilder);
+        }
     }
 }

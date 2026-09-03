@@ -1,4 +1,6 @@
 ﻿using System.Collections.Concurrent;
+using System.Configuration;
+using SystemConfigurationManager = System.Configuration.ConfigurationManager;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -20,8 +22,8 @@ namespace Dapper.Extensions
         private readonly ConcurrentDictionary<string, ConnectionConfiguration> _connections =
             new ConcurrentDictionary<string, ConnectionConfiguration>();
 
-        public DefaultConnectionStringProvider(IConfiguration configuration, IServiceProvider service,
-            ILogger<DefaultConnectionStringProvider> logger)
+        public DefaultConnectionStringProvider(IConfiguration configuration = null, IServiceProvider service = null,
+            ILogger<DefaultConnectionStringProvider> logger = null)
         {
             Configuration = configuration;
             Service = service;
@@ -31,7 +33,11 @@ namespace Dapper.Extensions
         public string GetConnectionString(string connectionName, bool enableMasterSlave = false, bool readOnly = false)
         {
             if (!enableMasterSlave)
-                return Configuration.GetConnectionString(connectionName);
+                return SystemConfigurationManager.ConnectionStrings[connectionName]?.ConnectionString;
+
+            if (Configuration == null)
+                throw new InvalidOperationException(
+                    "IConfiguration is required when master/slave connection strings are enabled.");
 
             var connection = _connections.GetOrAdd(connectionName, name =>
             {

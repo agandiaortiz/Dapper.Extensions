@@ -10,5 +10,10 @@ namespace Dapper.Extensions.PostgreSql
         {
             return services.AddDapper<PostgreSqlDapper>(monitorBuilder);
         }
+
+        public static IServiceCollection AddDapperForPostgreSQL(this IServiceCollection services, string connectionName, Action<MonitorBuilder> monitorBuilder = null)
+        {
+            return services.AddDapper<PostgreSqlDapper>(connectionName, monitorBuilder);
+        }
     }
 }

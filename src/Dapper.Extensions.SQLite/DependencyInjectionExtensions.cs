@@ -10,5 +10,10 @@ namespace Dapper.Extensions.SQLite
         {
             return services.AddDapper<SQLiteDapper>(monitorBuilder);
         }
+
+        public static IServiceCollection AddDapperForSQLite(this IServiceCollection services, string connectionName, Action<MonitorBuilder> monitorBuilder = null)
+        {
+            return services.AddDapper<SQLiteDapper>(connectionName, monitorBuilder);
+        }
     }
 }

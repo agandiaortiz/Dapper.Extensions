@@ -11,6 +11,11 @@ namespace Dapper.Extensions
     {
         public static IServiceCollection AddDapper<TDbProvider>(this IServiceCollection services, Action<MonitorBuilder> monitorBuilder = null) where TDbProvider : IDapper
         {
+            return services.AddDapper<TDbProvider>("DefaultConnection", monitorBuilder);
+        }
+
+        public static IServiceCollection AddDapper<TDbProvider>(this IServiceCollection services, string connectionName, Action<MonitorBuilder> monitorBuilder = null) where TDbProvider : IDapper
+        {
             if (monitorBuilder != null)
             {
                 var builder = new MonitorBuilder(services);
@@ -21,11 +26,13 @@ namespace Dapper.Extensions
                     EnableLog = builder.EnableLog,
                     HasCustomMonitorHandler = builder.HasCustomMonitorHandler
                 });
-                services.AddScoped(typeof(TDbProvider))
+                services.AddScoped(typeof(TDbProvider), serviceProvider =>
+                        ActivatorUtilities.CreateInstance<TDbProvider>(serviceProvider, connectionName))
                     .AddScoped<IDapper>(sc => new DapperProxy(sc.GetRequiredService<TDbProvider>(), sc));
             }
             else
-                services.AddScoped(typeof(IDapper), typeof(TDbProvider));
+                services.AddScoped(typeof(IDapper), serviceProvider =>
+                    ActivatorUtilities.CreateInstance<TDbProvider>(serviceProvider, connectionName));
 
             return services.AddSingleton<IConnectionStringProvider, DefaultConnectionStringProvider>();
         }
